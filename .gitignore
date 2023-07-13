@@ -1,0 +1,9 @@
+chat/node_modules
+server/node_modules
+
+chat/package-lock.json
+server/package-lock.json
+
+.DS_Store
+
+.env
