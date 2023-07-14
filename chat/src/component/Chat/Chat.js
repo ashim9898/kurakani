@@ -7,11 +7,12 @@ const ENDPOINT = "http://localhost:4500/"
 
 const Chat = () => {
 
-const socket = socketIO(ENDPOINT, {transports: ['websocket']})
 
 useEffect(()=>{
+const socket = socketIO(ENDPOINT, {transports: ['websocket']})
+
 socket.on('connect',()=>{
-    alert("connected")
+    alert("Your server is connected")
 })
 socket.emit('joined',{user})
 
@@ -22,6 +23,15 @@ socket.on('welcome',(data)=>{
 socket.on('userJoined',(data)=>{
     console.log(data.user,data.message)
 })
+
+socket.on('leave',(data)=>{
+    console.log(data.user,data.message)
+})
+
+return()=>{
+   
+    socket.disconnect();
+}
 },[])
 
   return (
